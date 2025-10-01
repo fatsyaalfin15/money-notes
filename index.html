@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Notes Apps</title>
+    <link rel="icon" type= "image/png" href="/public/money.jfif">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Money Notes</h1>
+            <nav class="main-nav">
+                <button id="nav-main-btn" class="nav-btn active">Dashboard</button>
+                <button id="nav-history-btn" class="nav-btn">Riwayat Tanggal</button>
+            </nav>
+        </header>
+
+        <div id="main-view" class="view">
+            <div class="dashboard">
+                <div class="card income">
+                    <h2>Total Pemasukan</h2>
+                    <p id="total-pemasukan">Rp 0</p>
+                </div>
+                <div class="card expense">
+                    <h2>Total Pengeluaran</h2>
+                    <p id="total-pengeluaran">Rp 0</p>
+                </div>
+                <div class="card balance">
+                    <h2>Saldo Akhir</h2>
+                    <p id="saldo-akhir">Rp 0</p>
+                </div>
+            </div>
+
+            <main>
+                <div class="form-container">
+                    <h2 id="form-title">Tambah Transaksi Baru</h2>
+                    <form id="transaction-form">
+                        <input type="hidden" id="transaction-id" name="id">
+                        <div class="form-grid">
+                            <div class="form-control">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="date" id="tanggal" name="tanggal" required>
+                            </div>
+                            <div class="form-control">
+                                <label for="kategori">Kategori</label>
+                                <select id="kategori" name="kategori" required>
+                                    <option value="" disabled selected>-- Pilih Kategori --</option>
+                                    <option value="Makanan">Makanan</option>
+                                    <option value="Transportasi">Transportasi</option>
+                                    <option value="Kuliah">Kuliah</option>
+                                    <option value="Hiburan">Hiburan</option>
+                                    <option value="Gaji">Gaji</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="form-control">
+                                <label for="jenis">Jenis Transaksi</label>
+                                <select id="jenis" name="jenis" required>
+                                    <option value="" disabled selected>-- Pilih Jenis --</option>
+                                    <option value="pemasukan">Pemasukan</option>
+                                    <option value="pengeluaran">Pengeluaran</option>
+                                </select>
+                            </div>
+                            <div class="form-control">
+                                <label for="nominal">Nominal</label>
+                                <input type="number" id="nominal" name="nominal" placeholder="Contoh: 50000" required>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <label for="catatan">Catatan (Opsional)</label>
+                            <textarea id="catatan" name="catatan" rows="2" placeholder="Contoh: Beli makan siang"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Simpan Transaksi</button>
+                            <button type="button" id="cancel-edit-btn" class="btn btn-secondary" style="display: none;">Batal</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="history-container">
+                    <h2>Riwayat Transaksi</h2>
+                    <div class="filter-container">
+                        <input type="text" id="filter-keyword" placeholder="Cari di catatan...">
+                        <select id="filter-jenis">
+                            <option value="all">Semua Jenis</option>
+                            <option value="pemasukan">Pemasukan</option>
+                            <option value="pengeluaran">Pengeluaran</option>
+                        </select>
+                    </div>
+                    <div id="transaction-list">
+                        </div>
+                </div>
+            </main>
+        </div>
+        
+        <div id="history-view" class="view" style="display: none;">
+            <div class="history-by-date-container">
+                <h2>Riwayat Berdasarkan Tanggal</h2>
+                <div id="history-list">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="delete-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Konfirmasi Hapus</h3>
+            <p>Anda yakin ingin menghapus transaksi ini?</p>
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="btn btn-secondary">Batal</button>
+                <button id="modal-confirm-btn" class="btn btn-danger">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="welcome-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Selamat Datang!</h3>
+            <p>Ini adalah aplikasi Money Notes untuk mencatat keuangan harian Anda.</p>
+            <div class="modal-actions">
+                <button id="welcome-ok-btn" class="btn btn-primary">Mengerti</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
